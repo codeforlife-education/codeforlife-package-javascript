@@ -68,11 +68,6 @@ const viteConfig = defineConfig({
       tsconfigPath: "./tsconfig.app.json",
     }),
   ],
-  ssr: {
-    // Tells Vite NOT to process Phaser for the SSR/Node target
-    noExternal: [],
-    external: ["phaser"],
-  },
   build: {
     // Informs Vite we are building a library.
     lib: {
@@ -125,8 +120,6 @@ const viteConfig = defineConfig({
         "cjs",
       ],
     },
-    // Client bundle optimization
-    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       // Tells Rollup which packages should not be bundled in. Why is this
       // important?
@@ -148,12 +141,6 @@ const viteConfig = defineConfig({
         /^\.\/dist\/.*/, // this package's dist files
         /^(\.\.\/){3,}dist\/.*/, // a service's dist files
       ],
-      output: {
-        manualChunks: {
-          // Splitting Phaser v4 into its own chunk keeps your core React UI snappy
-          phaser: ["phaser"],
-        },
-      },
     },
     // Vite will output both your built .js file and a corresponding .js.map
     // file. When you install this package in your application and open your
