@@ -33,6 +33,7 @@ export default class Server {
     envIsProduction: boolean;
     templateHtml: string;
     hostname: string;
+    configFile: string;
     mode: Mode;
     port: number;
     base: string;
