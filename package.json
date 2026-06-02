@@ -2,7 +2,7 @@
   "name": "codeforlife",
   "description": "Common frontend code",
   "private": false,
-  "version": "2.14.9",
+  "version": "2.14.10",
   "type": "module",
   "types": "dist/index.d.ts",
   "module": "dist/index.es.js",

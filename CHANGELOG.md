@@ -1,3 +1,10 @@
+## [2.14.10](https://github.com/ocadotechnology/codeforlife-package-javascript/compare/v2.14.9...v2.14.10) (2026-06-02)
+
+
+### Bug Fixes
+
+* allow per-service vite config when serving in dev mode ([#98](https://github.com/ocadotechnology/codeforlife-package-javascript/issues/98)) ([727f703](https://github.com/ocadotechnology/codeforlife-package-javascript/commit/727f70394d7ce789236d9ba98ec5c5f648cd40f6))
+
 ## [2.14.9](https://github.com/ocadotechnology/codeforlife-package-javascript/compare/v2.14.8...v2.14.9) (2026-05-08)
 
 
