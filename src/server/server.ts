@@ -63,6 +63,7 @@ export default class Server {
   envIsProduction: boolean
   templateHtml: string
   hostname: string
+  configFile: string
   mode: Mode
   port: number
   base: string
@@ -79,6 +80,7 @@ export default class Server {
     this.templateHtml = ""
     this.hostname = this.envIsProduction ? "0.0.0.0" : "127.0.0.1"
 
+    this.configFile = "./vite.config.ts"
     this.mode = mode || (process.env.MODE as Mode) || "development"
     this.port =
       port ||
@@ -240,8 +242,15 @@ export default class Server {
   async setUpDevelopment(): Promise<Setup> {
     const { createServer } = await import("vite")
 
+    // Check if service has its own config, else fall back to workspace config.
+    try {
+      await fs.stat(this.configFile)
+    } catch {
+      this.configFile = "/workspace/frontend/vite.config.ts"
+    }
+
     const vite = await createServer({
-      configFile: "/workspace/frontend/vite.config.ts",
+      configFile: this.configFile,
       server: {
         middlewareMode: true,
         hmr: { server: this.server },
@@ -298,7 +307,10 @@ export default class Server {
         `url: http://${this.hostname}:${this.port}\n` +
         `environment: ${process.env.NODE_ENV}\n`
 
-      if (!this.envIsProduction) startMessage += `mode: ${this.mode}\n`
+      if (!this.envIsProduction) {
+        startMessage +=
+          `mode: ${this.mode}\n` + `config file: ${this.configFile}\n`
+      }
 
       console.log(startMessage)
     })
