@@ -11,7 +11,7 @@ import { type ValidateOptions, bool as YupBool } from "yup"
 import { type FC } from "react"
 
 import { type FormValues, schemaToFieldValidator } from "../../utils/form"
-import { getNestedProperty } from "../../utils/general"
+import { getNestedProperty } from "../../utils/object"
 
 export interface CheckboxFieldProps
   extends Omit<

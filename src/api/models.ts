@@ -1,4 +1,4 @@
-import type { CountryIsoCodes, UkCounties } from "../utils/general"
+import type { CountryIsoCodes, UkCounties } from "../utils/location"
 import type { Model } from "../utils/api"
 
 // -----------------------------------------------------------------------------

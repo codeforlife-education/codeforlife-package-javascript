@@ -7,7 +7,7 @@ import {
 import { type StringSchema, type ValidateOptions, array as YupArray } from "yup"
 
 import { type FormValues, schemaToFieldValidator } from "../../utils/form"
-import { getNestedProperty } from "../../utils/general"
+import { getNestedProperty } from "../../utils/object"
 
 export type TextFieldProps = Omit<
   MuiTextFieldProps,

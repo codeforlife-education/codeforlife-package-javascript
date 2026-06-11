@@ -14,7 +14,7 @@ import {
 } from "yup"
 
 import { type FormValues, schemaToFieldValidator } from "../../utils/form"
-import { getNestedProperty } from "../../utils/general"
+import { getNestedProperty } from "../../utils/object"
 
 export interface AutocompleteFieldProps<
   Value extends string | number,

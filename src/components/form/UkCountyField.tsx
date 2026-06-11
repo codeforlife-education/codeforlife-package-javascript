@@ -4,7 +4,7 @@ import { type ChipTypeMap } from "@mui/material"
 import AutocompleteField, {
   type AutocompleteFieldProps,
 } from "./AutocompleteField"
-import { UK_COUNTIES } from "../../utils/general"
+import { UK_COUNTIES } from "../../utils/location"
 
 export interface UkCountyFieldProps<
   Multiple extends boolean | undefined = false,

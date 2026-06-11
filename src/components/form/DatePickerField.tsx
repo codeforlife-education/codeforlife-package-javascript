@@ -11,7 +11,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { type JSX } from "react"
 
 import { type FormValues, schemaToFieldValidator } from "../../utils/form"
-import { getNestedProperty } from "../../utils/general"
+import { getNestedProperty } from "../../utils/object"
 
 export interface DatePickerFieldProps<
   TEnableAccessibleFieldDOMStructure extends boolean = true,

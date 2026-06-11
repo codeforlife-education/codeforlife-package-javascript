@@ -21,7 +21,7 @@ import {
   type SubmitFormOptions,
   submitForm,
 } from "../../utils/form"
-import { getKeyPaths } from "../../utils/general"
+import { getKeyPaths } from "../../utils/object"
 
 const SCROLL_INTO_VIEW_OPTIONS: ScrollIntoViewOptions = {
   behavior: "smooth",

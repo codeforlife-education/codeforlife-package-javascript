@@ -2,7 +2,7 @@ import type { FieldValidator, FormikHelpers } from "formik"
 import { type Schema, type ValidateOptions, ValidationError } from "yup"
 import type { TypedMutationTrigger } from "@reduxjs/toolkit/query/react"
 
-import { excludeKeyPaths, getKeyPaths, getNestedProperty } from "./general"
+import { excludeKeyPaths, getKeyPaths, getNestedProperty } from "./object"
 
 export type FormValues = Record<string, any>
 

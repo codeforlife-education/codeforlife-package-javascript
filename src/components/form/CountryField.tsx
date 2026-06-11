@@ -8,7 +8,7 @@ import {
   COUNTRY_ISO_CODES,
   COUNTRY_ISO_CODE_MAPPING,
   type CountryIsoCodes,
-} from "../../utils/general"
+} from "../../utils/location"
 
 export interface CountryFieldProps<
   Multiple extends boolean | undefined = false,

@@ -20,7 +20,7 @@ import type {
   TeacherUser,
   User,
 } from "./models"
-import { COUNTRY_ISO_CODES, UK_COUNTIES } from "../utils/general"
+import { COUNTRY_ISO_CODES, UK_COUNTIES } from "../utils/location"
 import {
   lowercaseAsciiAlphanumericString,
   numericId,

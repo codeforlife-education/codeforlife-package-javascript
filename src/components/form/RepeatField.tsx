@@ -10,7 +10,7 @@ import { TextField as MuiTextField, type TextFieldProps } from "@mui/material"
 import { type ValidateOptions, string as YupString } from "yup"
 
 import { type FormValues, schemaToFieldValidator } from "../../utils/form"
-import { getNestedProperty } from "../../utils/general"
+import { getNestedProperty } from "../../utils/object"
 
 export type RepeatFieldProps = Omit<
   TextFieldProps,

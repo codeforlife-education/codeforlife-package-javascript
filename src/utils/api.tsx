@@ -7,9 +7,10 @@ import type {
 import { CircularProgress } from "@mui/material"
 import { type ReactNode } from "react"
 
-import { type Optional, type Required, getNestedProperty } from "./general"
+import { type Optional, type Required } from "./general"
 import { type SchemaMap } from "./schema"
 import SyncError from "../components/SyncError"
+import { getNestedProperty } from "./object"
 
 // -----------------------------------------------------------------------------
 // Model Types
