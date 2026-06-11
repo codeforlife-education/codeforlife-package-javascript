@@ -2,8 +2,9 @@ import {
   excludeKeyPaths,
   getKeyPaths,
   getNestedProperty,
+  prefixValuesWithKeyPath,
   withKeyPaths,
-} from "./general"
+} from "./object"
 
 // getNestedProperty
 
@@ -52,4 +53,18 @@ test("exclude nested keys by their path", () => {
   ]) as object
 
   expect(obj).toMatchObject({ a: 1, b: { d: {} } })
+})
+
+// prefixValuesWithKeyPath
+
+test("prefix the values of nested keys with their path", () => {
+  const obj = prefixValuesWithKeyPath({
+    a: 1,
+    b: { c: 2, d: { e: 3 } },
+  } as const)
+
+  expect(obj).toMatchObject({
+    a: "a.1",
+    b: { c: "b.c.2", d: { e: "b.d.e.3" } },
+  })
 })
