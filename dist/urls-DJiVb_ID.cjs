@@ -1,0 +1,2 @@
+"use strict";const s=require("./api-CaEovEUU.cjs"),e={user:s.modelUrls("users/","users/<id>/"),teacher:s.modelUrls("users/teachers/","users/teachers/<id>/"),student:s.modelUrls("users/students/","users/students/<id>/"),school:s.modelUrls("schools/","schools/<id>/"),class:s.modelUrls("classes/","classes/<id>/"),otpBypassToken:s.modelUrls("otp-bypass-tokens/","otp-bypass-tokens/<id>/"),authFactor:s.modelUrls("auth-factors/","auth-factors/<id>/")};exports.urls=e;
+//# sourceMappingURL=urls-DJiVb_ID.cjs.map

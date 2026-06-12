@@ -1,4 +1,4 @@
-import { CountryIsoCodes, UkCounties } from '../utils/general';
+import { CountryIsoCodes, UkCounties } from '../utils/location';
 import { Model } from '../utils/api';
 type _UserTeacher<T extends Teacher> = Omit<T, "user">;
 type _UserStudent<S extends Student> = Omit<S, "user" | "auto_gen_password">;
