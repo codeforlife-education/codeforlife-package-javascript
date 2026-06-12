@@ -8,6 +8,8 @@ export type OptionalPropertyNames<T> = {
     } ? K : never;
 }[keyof T];
 export type IsOptional<T, K extends keyof T> = K extends OptionalPropertyNames<T> ? true : false;
+/** Creates a tuple type of length N with elements of type T. */
+export type Tuple<T, N extends number, A extends T[] = []> = A["length"] extends N ? A : Tuple<T, N, [...A, T]>;
 export declare function openInNewTab(url: string, target?: string): void;
 export declare function wrap(newFn: {
     before?: (...args: any[]) => void;
