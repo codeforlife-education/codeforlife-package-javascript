@@ -1,3 +1,10 @@
+## [2.15.2](https://github.com/ocadotechnology/codeforlife-package-javascript/compare/v2.15.1...v2.15.2) (2026-06-12)
+
+
+### Bug Fixes
+
+* more object utils ([ea8105c](https://github.com/ocadotechnology/codeforlife-package-javascript/commit/ea8105cc9f859319e0101b191a89ca698f97f864))
+
 ## [2.15.1](https://github.com/ocadotechnology/codeforlife-package-javascript/compare/v2.15.0...v2.15.1) (2026-06-12)
 
 
