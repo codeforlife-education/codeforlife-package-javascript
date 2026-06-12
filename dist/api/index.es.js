@@ -2,9 +2,9 @@ import { fetchBaseQuery as u, createApi as d } from "@reduxjs/toolkit/query/reac
 import "@reduxjs/toolkit";
 import { b as l } from "../session-CJM1Czfv.js";
 import { getCsrfCookie as s } from "../utils/auth.es.js";
-import { i as y } from "../api-r7TLkejc.js";
-import { s as C } from "../schemas-BEK79Cdh.js";
-import { u as w } from "../urls-CQ1fgrB1.js";
+import { i as y } from "../api-vqkeMjJB.js";
+import { s as C } from "../schemas-XzwqFsHM.js";
+import { u as w } from "../urls-DCXZ2b50.js";
 const g = [
   // These are the tags for the common models used throughout our system.
   // https://github.com/ocadotechnology/codeforlife-package-python/tree/main/codeforlife/user/models
