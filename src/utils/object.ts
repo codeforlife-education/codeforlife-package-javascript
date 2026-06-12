@@ -1,3 +1,47 @@
+/** Recursively extracts all numeric values from a nested object structure. */
+export type DeepNumbersOf<T> = T extends number
+  ? T
+  : T extends object
+    ? DeepNumbersOf<T[keyof T]>
+    : never
+/** Recursively extracts all string values from a nested object structure. */
+export type DeepStringsOf<T> = T extends string
+  ? T
+  : T extends object
+    ? DeepStringsOf<T[keyof T]>
+    : never
+
+function _flattenValuesOfType<T extends object, U>(
+  obj: T,
+  typeGuard: (value: unknown) => value is U,
+): U[] {
+  return Object.values(obj).flatMap(v =>
+    typeGuard(v)
+      ? [v]
+      : typeof v === "object" && v !== null
+        ? _flattenValuesOfType(v, typeGuard)
+        : [],
+  )
+}
+
+export function flattenNumberValues<T extends object>(
+  obj: T,
+): DeepNumbersOf<T>[] {
+  return _flattenValuesOfType(
+    obj,
+    (value): value is number => typeof value === "number",
+  ) as DeepNumbersOf<T>[]
+}
+
+export function flattenStringValues<T extends object>(
+  obj: T,
+): DeepStringsOf<T>[] {
+  return _flattenValuesOfType(
+    obj,
+    (value): value is string => typeof value === "string",
+  ) as DeepStringsOf<T>[]
+}
+
 export function getNestedProperty(
   obj: Record<string, any>,
   dotPath: string | string[],
@@ -84,40 +128,117 @@ type JoinPath<
   D extends string,
 > = A extends "" ? B : `${A}${D}${B}`
 
-type PrefixedValues<
+export type PathStringMap<
   T extends object,
   Path extends string = "",
   D extends string = ".",
-> = {
-  [K in keyof T & string]: T[K] extends object
-    ? PrefixedValues<T[K], JoinPath<Path, K, D>, D>
-    : `${JoinPath<Path, K, D>}${D}${T[K] & (string | number | bigint | boolean | null | undefined)}`
-}
+> = T extends readonly (infer E extends string)[]
+  ? { [V in E]: JoinPath<Path, V, D> }
+  : {
+      [K in keyof T & string]: T[K] extends readonly (infer E extends string)[]
+        ? { [V in E]: JoinPath<JoinPath<Path, K, D>, V, D> }
+        : T[K] extends object
+          ? PathStringMap<T[K] & object, JoinPath<Path, K, D>, D>
+          : T[K] extends string
+            ? { [V in T[K]]: JoinPath<JoinPath<Path, K, D>, V, D> }
+            : never
+    }
 
-export function prefixValuesWithKeyPath<const T extends object>(
+export function createPathStrings<const T extends object>(
   obj: T,
-): PrefixedValues<T>
-export function prefixValuesWithKeyPath<
-  const T extends object,
-  D extends string,
->(obj: T, delimiter: D): PrefixedValues<T, "", D>
-export function prefixValuesWithKeyPath(
+): PathStringMap<T>
+export function createPathStrings<const T extends object, D extends string>(
+  obj: T,
+  delimiter: D,
+): PathStringMap<T, "", D>
+export function createPathStrings(
   obj: object,
   delimiter: string = ".",
 ): object {
-  function _prefixValuesWithKeyPath(obj: object, path: string[]): object {
+  function _createPathStrings(obj: object, path: string[]): object {
+    if (Array.isArray(obj)) {
+      return Object.fromEntries(
+        (obj as string[]).map(value => [
+          value,
+          [...path, value].join(delimiter),
+        ]),
+      )
+    }
+
     return Object.fromEntries(
       Object.entries(obj).map(([key, value]) => {
         const _path = [...path, key]
 
         if (typeof value === "object" && value !== null)
-          value = _prefixValuesWithKeyPath(value as object, _path)
-        else value = `${_path.join(delimiter)}${delimiter}${value}`
+          value = _createPathStrings(value as object, _path)
+        else if (typeof value === "string")
+          value = { [value]: [..._path, value].join(delimiter) }
 
         return [key, value]
       }),
     )
   }
 
-  return _prefixValuesWithKeyPath(obj, [])
+  return _createPathStrings(obj, [])
+}
+
+type PathSpec = string | { readonly [key: string]: PathSpec }
+
+type ResolvePathSpec<T, ID extends number | string> = T extends string
+  ? Record<T, ID>
+  : { [K in keyof T]: ResolvePathSpec<T[K], ID> }
+
+type UnionToIntersection<U> = (
+  U extends unknown ? (x: U) => void : never
+) extends (x: infer I) => void
+  ? I
+  : never
+
+export type IdRegistryResult<T extends Record<number | string, PathSpec>> =
+  UnionToIntersection<
+    {
+      [K in keyof T]: K extends number | string
+        ? ResolvePathSpec<T[K], K>
+        : never
+    }[keyof T]
+  >
+
+/**
+ * Converts a mapping of numeric or string keys to path specifications into a
+ * nested object structure where each path specification is replaced with the
+ * corresponding numeric or string key. This allows to create a global registry
+ * of unique keys that can be easily referenced in the code.
+ *
+ * @param specs A mapping of numeric or string keys to path specifications,
+ * where each path specification can be a string or a nested object of strings.
+ * @returns A nested object structure where each path specification is replaced
+ * with the corresponding numeric or string key.
+ */
+export function createIdRegistry<T extends Record<number | string, PathSpec>>(
+  specs: T,
+): IdRegistryResult<T> {
+  const result: Record<string, unknown> = {}
+
+  function _assignPath(
+    target: Record<string, unknown>,
+    pathSpec: PathSpec,
+    id: number | string,
+  ): void {
+    if (typeof pathSpec === "string") {
+      target[pathSpec] = id
+    } else {
+      for (const [key, nested] of Object.entries(pathSpec)) {
+        if (!(key in target)) target[key] = {}
+        _assignPath(target[key] as Record<string, unknown>, nested, id)
+      }
+    }
+  }
+
+  for (const [idStr, pathSpec] of Object.entries(specs)) {
+    const num = Number(idStr)
+    const id: number | string = !isNaN(num) && idStr.trim() !== "" ? num : idStr
+    _assignPath(result, pathSpec, id)
+  }
+
+  return result as IdRegistryResult<T>
 }

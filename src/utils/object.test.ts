@@ -1,8 +1,11 @@
 import {
+  createIdRegistry,
+  createPathStrings,
   excludeKeyPaths,
+  flattenNumberValues,
+  flattenStringValues,
   getKeyPaths,
   getNestedProperty,
-  prefixValuesWithKeyPath,
   withKeyPaths,
 } from "./object"
 
@@ -55,16 +58,62 @@ test("exclude nested keys by their path", () => {
   expect(obj).toMatchObject({ a: 1, b: { d: {} } })
 })
 
-// prefixValuesWithKeyPath
+// createPathStrings
 
-test("prefix the values of nested keys with their path", () => {
-  const obj = prefixValuesWithKeyPath({
-    a: 1,
-    b: { c: 2, d: { e: 3 } },
+test("create path strings from an object", () => {
+  const obj = createPathStrings({
+    a: "b",
+    d: { e: ["f", "g"] },
   } as const)
 
   expect(obj).toMatchObject({
-    a: "a.1",
-    b: { c: "b.c.2", d: { e: "b.d.e.3" } },
+    a: { b: "a.b" },
+    d: { e: { f: "d.e.f", g: "d.e.g" } },
+  })
+})
+
+test("create path strings from an array", () => {
+  const obj = createPathStrings(["a", "b", "c"] as const)
+
+  expect(obj).toMatchObject({ a: "a", b: "b", c: "c" })
+})
+
+// flattenNumberValues
+
+test("flatten all number values in a nested object", () => {
+  const numbers = flattenNumberValues({
+    a: 1,
+    b: { c: 2, d: { e: 3 } },
+    f: "four",
+  } as const)
+
+  expect(numbers).toMatchObject([1, 2, 3])
+})
+
+// flattenStringValues
+
+test("flatten all string values in a nested object", () => {
+  const strings = flattenStringValues({
+    a: "one",
+    b: { c: "two", d: { e: "three" } },
+    f: 4,
+  } as const)
+
+  expect(strings).toMatchObject(["one", "two", "three"])
+})
+
+// createIdRegistry
+
+test("create an ID registry from a mapping of keys to path specifications", () => {
+  const registry = createIdRegistry({
+    1: "a",
+    2: { b: "c" },
+    3: { d: { e: "f" } },
+  } as const)
+
+  expect(registry).toMatchObject({
+    a: 1,
+    b: { c: 2 },
+    d: { e: { f: 3 } },
   })
 })
