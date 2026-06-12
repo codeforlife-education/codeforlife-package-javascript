@@ -133,6 +133,16 @@
       "import": "./dist/utils/general.es.js",
       "require": "./dist/utils/general.cjs.js"
     },
+    "./utils/location": {
+      "types": "./dist/utils/location.d.ts",
+      "import": "./dist/utils/location.es.js",
+      "require": "./dist/utils/location.cjs.js"
+    },
+    "./utils/object": {
+      "types": "./dist/utils/object.d.ts",
+      "import": "./dist/utils/object.es.js",
+      "require": "./dist/utils/object.cjs.js"
+    },
     "./utils/router": {
       "types": "./dist/utils/router.d.ts",
       "import": "./dist/utils/router.es.js",

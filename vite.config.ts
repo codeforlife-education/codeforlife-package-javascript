@@ -97,6 +97,8 @@ const viteConfig = defineConfig({
         "utils/cookies.ts",
         "utils/form.ts",
         "utils/general.ts",
+        "utils/location.ts",
+        "utils/object.ts",
         "utils/router.ts",
         "utils/schema.ts",
         "utils/settings.ts",
