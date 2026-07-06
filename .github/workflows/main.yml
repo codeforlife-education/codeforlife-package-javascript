@@ -11,14 +11,14 @@ on:
 
 jobs:
   issue:
-    uses: ocadotechnology/codeforlife-workspace/.github/workflows/issues.yaml@main
+    uses: codeforlife-education/codeforlife-workspace/.github/workflows/issues.yaml@main
     secrets: inherit
 
   contributor:
-    uses: ocadotechnology/codeforlife-contributor-backend/.github/workflows/check-pr-authors-signed-latest-agreement.yaml@main
+    uses: codeforlife-education/codeforlife-contributor-backend/.github/workflows/check-pr-authors-signed-latest-agreement.yaml@main
 
   test:
-    uses: ocadotechnology/codeforlife-workspace/.github/workflows/test-javascript-code.yaml@main
+    uses: codeforlife-education/codeforlife-workspace/.github/workflows/test-javascript-code.yaml@main
     secrets: inherit
     with:
       node-version: 22
@@ -30,13 +30,13 @@ jobs:
       sha: ${{ steps.push-dist-files.outputs.sha }}
     steps:
       - name: 🤖 Set up CFL bot
-        uses: ocadotechnology/codeforlife-workspace/.github/actions/bot/setup@main
+        uses: codeforlife-education/codeforlife-workspace/.github/actions/bot/setup@main
         id: setup-bot
         with:
           cfl-app-private-key: ${{ secrets.CFL_APP_PRIVATE_KEY }}
       
       - name: 🌐 Set up JavaScript 22 Environment
-        uses: ocadotechnology/codeforlife-workspace/.github/actions/javascript/setup-environment@main
+        uses: codeforlife-education/codeforlife-workspace/.github/actions/javascript/setup-environment@main
         with:
           node-version: 22
           install-prod: false
@@ -47,7 +47,7 @@ jobs:
 
       - name: 📤 Push Dist Files
         id: push-dist-files
-        uses: ocadotechnology/codeforlife-workspace/.github/actions/git/add-commit-push@main
+        uses: codeforlife-education/codeforlife-workspace/.github/actions/git/add-commit-push@main
         with:
           cfl-bot-gh-token: ${{ steps.setup-bot.outputs.token }}
           add: dist
@@ -67,13 +67,13 @@ jobs:
       github.ref_name == github.event.repository.default_branch
     steps:
       - name: 🤖 Set up CFL bot
-        uses: ocadotechnology/codeforlife-workspace/.github/actions/bot/setup@main
+        uses: codeforlife-education/codeforlife-workspace/.github/actions/bot/setup@main
         id: setup-bot
         with:
           cfl-app-private-key: ${{ secrets.CFL_APP_PRIVATE_KEY }}
 
       - name: 🚀 Publish Semantic Release
-        uses: ocadotechnology/codeforlife-workspace/.github/actions/github/release@main
+        uses: codeforlife-education/codeforlife-workspace/.github/actions/github/release@main
         with:
           ref: ${{ needs.build.outputs.sha }}
           cfl-bot-gh-token: ${{ steps.setup-bot.outputs.token }}
@@ -81,13 +81,13 @@ jobs:
           cfl-bot-user-email: ${{ steps.setup-bot.outputs.user-email }}
 
   monitor:
-    uses: ocadotechnology/codeforlife-workspace/.github/workflows/monitor-javascript-release.yaml@main
+    uses: codeforlife-education/codeforlife-workspace/.github/workflows/monitor-javascript-release.yaml@main
     secrets: inherit
     needs: [release]
     with:
       node-version: 22
 
   submodule:
-    uses: ocadotechnology/codeforlife-workspace/.github/workflows/gitmodules.yaml@main
+    uses: codeforlife-education/codeforlife-workspace/.github/workflows/gitmodules.yaml@main
     secrets: inherit
     needs: [release]

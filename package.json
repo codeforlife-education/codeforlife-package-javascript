@@ -187,14 +187,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ocadotechnology/codeforlife-package-javascript.git"
+    "url": "git+https://github.com/codeforlife-education/codeforlife-package-javascript.git"
   },
   "author": "Ocado",
   "license": "AGPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/ocadotechnology/codeforlife-package-javascript/issues"
+    "url": "https://github.com/codeforlife-education/codeforlife-package-javascript/issues"
   },
-  "homepage": "https://github.com/ocadotechnology/codeforlife-package-javascript#readme",
+  "homepage": "https://github.com/codeforlife-education/codeforlife-package-javascript#readme",
   "//": [
     "Dependency rules:",
     "✅ Do add `dependencies` that are required to use this package.",
