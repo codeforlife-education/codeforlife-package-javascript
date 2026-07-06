@@ -7,7 +7,7 @@ import { s as C } from "../schemas-XzwqFsHM.js";
 import { u as w } from "../urls-DCXZ2b50.js";
 const g = [
   // These are the tags for the common models used throughout our system.
-  // https://github.com/ocadotechnology/codeforlife-package-python/tree/main/codeforlife/user/models
+  // https://github.com/codeforlife-education/codeforlife-package-python/tree/main/codeforlife/user/models
   // NOTE: Don't use the "Teacher" and "Student" tags. Use "User" instead.
   "User",
   "School",
