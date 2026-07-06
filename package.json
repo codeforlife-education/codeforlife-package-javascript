@@ -215,7 +215,7 @@
     "dayjs": "1.11.19",
     "express": "4.22.2",
     "formik": "2.4.9",
-    "js-cookie": "3.0.5",
+    "js-cookie": "3.0.7",
     "memory-cache": "0.2.0",
     "qs": "6.15.2",
     "react": "19.1.1",
