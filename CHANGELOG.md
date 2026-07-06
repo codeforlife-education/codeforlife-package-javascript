@@ -1,3 +1,14 @@
+## [2.15.3](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.2...v2.15.3) (2026-07-06)
+
+
+### Bug Fixes
+
+* js-cookie ([f5bc440](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/f5bc4408d77015fa959ccefe6f1f71084d701a2d))
+* permissions ([a487ba5](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/a487ba5a8c1781f3ed9b6b6284d7fedd574ae076))
+* refs ([7e70984](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/7e7098490499784f322a474948b4370b5fb082ce))
+* use env var ([0348939](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/0348939893f3277f99fc768e663cec6021b491dc))
+* vars ([51fce14](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/51fce1439104ef30f482c9a699a3fdb3f00a941f))
+
 ## [2.15.2](https://github.com/ocadotechnology/codeforlife-package-javascript/compare/v2.15.1...v2.15.2) (2026-06-12)
 
 
