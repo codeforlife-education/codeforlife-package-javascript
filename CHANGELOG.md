@@ -1,3 +1,10 @@
+## [2.15.6](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.5...v2.15.6) (2026-09-16)
+
+
+### Bug Fixes
+
+* Update yarn and remove unnecessary packages ([97b6484](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/97b6484244e60853471f876acf7c2926397716c7))
+
 ## [2.15.5](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.4...v2.15.5) (2026-09-16)
 
 
