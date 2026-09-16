@@ -216,8 +216,6 @@
     "express": "5.2.1",
     "formik": "2.4.9",
     "js-cookie": "3.0.7",
-    "lodash": "4.18.1",
-    "lodash-es": "4.18.1",
     "memory-cache": "0.2.0",
     "qs": "6.16.0",
     "react": "19.1.1",
@@ -225,6 +223,7 @@
     "react-redux": "9.2.0",
     "react-router": "8.3.0",
     "sirv": "3.0.2",
+    "yaml": "2.9.1",
     "yup": "1.7.1"
   },
   "devDependencies": {
