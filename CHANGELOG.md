@@ -1,3 +1,10 @@
+## [2.15.7](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.6...v2.15.7) (2026-09-17)
+
+
+### Bug Fixes
+
+* Specify sub-dependency resolutions ([e39f95f](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/e39f95f94967ae899af127bf6e38d20e9978553a))
+
 ## [2.15.6](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.5...v2.15.6) (2026-09-16)
 
 
