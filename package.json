@@ -230,6 +230,10 @@
     "@codeforlife/workspace": "link:.workspace/frontend",
     "vite-plugin-dts": "4.5.4"
   },
+  "resolutions": {
+    "lodash": "4.17.21",
+    "lodash-es": "4.17.21"
+  },
   "release": {
     "branches": [
       "main"
