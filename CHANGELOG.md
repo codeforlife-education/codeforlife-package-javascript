@@ -1,3 +1,10 @@
+## [2.15.9](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.8...v2.15.9) (2026-09-18)
+
+
+### Bug Fixes
+
+* Name wildcard segment after Express upgrade ([0bdd35c](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/0bdd35ce5ef4220089c209d13ecdb0b5833a6e27))
+
 ## [2.15.8](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.7...v2.15.8) (2026-09-17)
 
 
