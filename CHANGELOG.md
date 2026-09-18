@@ -1,3 +1,10 @@
+## [2.15.10](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.9...v2.15.10) (2026-09-18)
+
+
+### Bug Fixes
+
+* Again but do it properly ([d2b9a2e](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/d2b9a2ee3328f9f8cda250850b840dbe765c63ab))
+
 ## [2.15.9](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.8...v2.15.9) (2026-09-18)
 
 
