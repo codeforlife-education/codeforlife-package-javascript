@@ -145,7 +145,7 @@ class g {
       (e, t) => {
         this.handleChromeDevTools(e, t);
       }
-    ), this.app.get("*", async (e, t) => {
+    ), this.app.get("/*splat", async (e, t) => {
       await this.handleServeHtml(e, t, o);
     }), this.server.listen(this.port, this.hostname, () => {
       let e = `Server started.
