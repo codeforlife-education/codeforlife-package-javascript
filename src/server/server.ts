@@ -297,7 +297,7 @@ export default class Server {
       },
     )
 
-    this.app.get("*", async (request, response) => {
+    this.app.get("/*splat", async (request, response) => {
       await this.handleServeHtml(request, response, setup)
     })
 
