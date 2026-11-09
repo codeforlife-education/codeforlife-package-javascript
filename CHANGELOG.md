@@ -1,3 +1,10 @@
+## [2.15.11](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.10...v2.15.11) (2026-11-09)
+
+
+### Bug Fixes
+
+* Upgrade qs and express ([ad68d25](https://github.com/codeforlife-education/codeforlife-package-javascript/commit/ad68d253a49cdd74b4100102b5982fb05158b384))
+
 ## [2.15.10](https://github.com/codeforlife-education/codeforlife-package-javascript/compare/v2.15.9...v2.15.10) (2026-09-18)
 
 
